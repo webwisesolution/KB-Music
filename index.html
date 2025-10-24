@@ -1183,6 +1183,390 @@
             font-size: 1.3rem;
             margin-bottom: 10px;
         }
+
+        /* NEW STYLES FOR ENHANCED FEATURES */
+
+        /* YouTube Player Styles */
+        .youtube-player {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        /* Calendar Styles */
+        .calendar-container {
+            background-color: var(--gray);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .calendar-nav {
+            background: none;
+            border: none;
+            color: var(--accent);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+        }
+
+        .calendar-day {
+            text-align: center;
+            padding: 8px 5px;
+            font-weight: 600;
+            color: #999;
+        }
+
+        .calendar-date {
+            text-align: center;
+            padding: 10px 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .calendar-date:hover {
+            background-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .calendar-date.selected {
+            background-color: var(--accent);
+            color: var(--primary);
+        }
+
+        .calendar-date.unavailable {
+            color: #666;
+            cursor: not-allowed;
+        }
+
+        .calendar-date.unavailable:hover {
+            background-color: transparent;
+        }
+
+        .time-slots {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .time-slot {
+            padding: 10px;
+            text-align: center;
+            background-color: var(--primary);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .time-slot:hover {
+            background-color: rgba(212, 175, 55, 0.2);
+        }
+
+        .time-slot.selected {
+            background-color: var(--accent);
+            color: var(--primary);
+        }
+
+        /* Shopping Cart Styles */
+        .cart-icon {
+            position: relative;
+            margin-left: 20px;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent);
+            color: var(--primary);
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .cart-modal {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background-color: var(--gray);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .cart-modal.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #333;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: var(--secondary);
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .cart-items {
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #333;
+        }
+
+        .cart-item-image {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-price {
+            color: var(--accent);
+            font-weight: 700;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+        }
+
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            background-color: var(--primary);
+            border: none;
+            color: var(--secondary);
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .quantity-input {
+            width: 40px;
+            text-align: center;
+            margin: 0 5px;
+            background-color: transparent;
+            border: 1px solid #333;
+            color: var(--secondary);
+            border-radius: 3px;
+            padding: 3px;
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--accent);
+            color: var(--primary);
+            border: none;
+            border-radius: 5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .checkout-btn:hover {
+            background-color: var(--highlight);
+        }
+
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1999;
+            display: none;
+        }
+
+        .cart-overlay.active {
+            display: block;
+        }
+
+        /* Success Message */
+        .success-message {
+            background-color: rgba(0, 128, 0, 0.2);
+            border: 1px solid #006600;
+            color: #00cc00;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .success-message.active {
+            display: block;
+        }
+
+        /* Payment Methods Styles */
+        .payment-section {
+            margin-bottom: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+        }
+
+        .payment-title {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+
+        .payment-methods {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .payment-method {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: var(--primary);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .payment-method:hover {
+            background-color: rgba(212, 175, 55, 0.1);
+        }
+
+        .payment-method.selected {
+            background-color: rgba(212, 175, 55, 0.2);
+            border: 1px solid var(--accent);
+        }
+
+        .payment-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .payment-details {
+            margin-top: 15px;
+            padding: 15px;
+            background-color: var(--primary);
+            border-radius: 5px;
+            display: none;
+        }
+
+        .payment-details.active {
+            display: block;
+        }
+
+        .mpesa-form .form-group {
+            margin-bottom: 15px;
+        }
+
+        .card-form .form-group {
+            margin-bottom: 15px;
+        }
+
+        .paypal-button {
+            width: 100%;
+            padding: 12px;
+            background-color: #0070ba;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .paypal-button:hover {
+            background-color: #005ea6;
+        }
+
+        .paypal-icon {
+            font-size: 1.2rem;
+        }
+
+        /* Media Queries for new features */
+        @media (max-width: 768px) {
+            .cart-modal {
+                width: 100%;
+                right: -100%;
+            }
+            
+            .time-slots {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
     </style>
 </head>
 <body>
@@ -1211,6 +1595,12 @@
                     <li class="nav-item"><a href="#" class="nav-link" onclick="showPage('blog')">Blog</a></li>
                     <li class="nav-item"><a href="#" class="nav-link" onclick="showPage('shop')">Shop</a></li>
                     <li class="nav-item"><a href="#" class="nav-link" onclick="showPage('contact')">Contact</a></li>
+                    <li class="nav-item cart-icon">
+                        <a href="#" class="nav-link" onclick="toggleCart()">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </a>
+                    </li>
                 </ul>
                 <div class="hamburger">
                     <span class="bar"></span>
@@ -1221,6 +1611,102 @@
         </div>
     </header>
 
+    <!-- Shopping Cart -->
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart" onclick="toggleCart()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be dynamically added here -->
+        </div>
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cartTotal">KES 0</span>
+        </div>
+        
+        <!-- Payment Methods Section -->
+        <div class="payment-section">
+            <h4 class="payment-title">Select Payment Method</h4>
+            <div class="payment-methods">
+                <div class="payment-method" onclick="selectPaymentMethod('mpesa')">
+                    <div class="payment-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div>
+                        <div>M-Pesa</div>
+                        <small>Pay with your M-Pesa account</small>
+                    </div>
+                </div>
+                <div class="payment-method" onclick="selectPaymentMethod('card')">
+                    <div class="payment-icon">
+                        <i class="far fa-credit-card"></i>
+                    </div>
+                    <div>
+                        <div>Credit/Debit Card</div>
+                        <small>Pay with your card</small>
+                    </div>
+                </div>
+                <div class="payment-method" onclick="selectPaymentMethod('paypal')">
+                    <div class="payment-icon">
+                        <i class="fab fa-paypal"></i>
+                    </div>
+                    <div>
+                        <div>PayPal</div>
+                        <small>Pay with your PayPal account</small>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- M-Pesa Payment Details -->
+            <div class="payment-details" id="mpesaDetails">
+                <div class="mpesa-form">
+                    <div class="form-group">
+                        <label for="mpesaPhone">Phone Number</label>
+                        <input type="tel" class="form-control" id="mpesaPhone" placeholder="e.g. 0799 772 895" required>
+                    </div>
+                    <button class="btn" onclick="processMpesaPayment()">Pay with M-Pesa</button>
+                </div>
+            </div>
+            
+            <!-- Card Payment Details -->
+            <div class="payment-details" id="cardDetails">
+                <div class="card-form">
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number</label>
+                        <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012 3456" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cardName">Name on Card</label>
+                        <input type="text" class="form-control" id="cardName" placeholder="John Doe" required>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                        <div class="form-group">
+                            <label for="cardExpiry">Expiry Date</label>
+                            <input type="text" class="form-control" id="cardExpiry" placeholder="MM/YY" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardCVC">CVC</label>
+                            <input type="text" class="form-control" id="cardCVC" placeholder="123" required>
+                        </div>
+                    </div>
+                    <button class="btn" onclick="processCardPayment()">Pay with Card</button>
+                </div>
+            </div>
+            
+            <!-- PayPal Payment Details -->
+            <div class="payment-details" id="paypalDetails">
+                <button class="paypal-button" onclick="processPayPalPayment()">
+                    <i class="fab fa-paypal paypal-icon"></i>
+                    Pay with PayPal
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- Home Page -->
     <div id="home" class="page active">
         <section class="hero">
@@ -1230,7 +1716,7 @@
                 <p>From the heart of Kenya, KB Music is dedicated to elevating music and creating unforgettable event experiences.</p>
                 <div class="hero-btns">
                     <a href="#" class="btn" onclick="showPage('music')">Listen Now</a>
-                    <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book an Event</a>
+                    <a href="#" class="btn btn-outline" onclick="showPage('events')">Book an Event</a>
                 </div>
             </div>
         </section>
@@ -1239,37 +1725,34 @@
             <div class="container">
                 <div class="section-title">
                     <h2>Featured Music</h2>
-                    <p>Check out our latest releases</p>
+                    <p>Check out our latest releases directly from YouTube</p>
                 </div>
                 <div class="music-grid">
                     <div class="music-card fade-in">
-                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Kenyan+Vibes" alt="Album Cover" class="album-cover">
+                        <div class="youtube-player">
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/LmF61e-MwkE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
                         <div class="music-info">
                             <h3 class="music-title">Kenyan Vibes</h3>
-                            <div class="music-meta">Single • 2023</div>
-                            <a href="#" class="play-btn" data-audio="audio1">
-                                <i class="fas fa-play"></i>
-                            </a>
+                            <div class="music-meta">Single • 2025</div>
                         </div>
                     </div>
                     <div class="music-card fade-in">
-                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Nairobi+Nights" alt="Album Cover" class="album-cover">
+                        <div class="youtube-player">
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/jkS4OLX41Fc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
                         <div class="music-info">
                             <h3 class="music-title">Nairobi Nights</h3>
-                            <div class="music-meta">EP • 2023</div>
-                            <a href="#" class="play-btn" data-audio="audio2">
-                                <i class="fas fa-play"></i>
-                            </a>
+                            <div class="music-meta">EP • 2025</div>
                         </div>
                     </div>
                     <div class="music-card fade-in">
-                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Savannah+Rhythms" alt="Album Cover" class="album-cover">
+                        <div class="youtube-player">
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/UfiA1vJ4gEI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
                         <div class="music-info">
                             <h3 class="music-title">Savannah Rhythms</h3>
-                            <div class="music-meta">Album • 2022</div>
-                            <a href="#" class="play-btn" data-audio="audio3">
-                                <i class="fas fa-play"></i>
-                            </a>
+                            <div class="music-meta">Album • 2025</div>
                         </div>
                     </div>
                 </div>
@@ -1406,7 +1889,7 @@
                     </div>
                     <div class="founder-spotlight">
                         <div class="founder-image">
-                            <img src="https://via.placeholder.com/500x600/0A0A0A/D4AF37?text=Kraizy+Bwoy" alt="Kraizy Bwoy">
+                            <img src="images/download.webp" alt="Kraizy Bwoy">
                             <div class="founder-name">Kraizy Bwoy</div>
                         </div>
                         <p>Founder & Creative Director</p>
@@ -1461,67 +1944,34 @@
             <div class="container">
                 <div class="section-title">
                     <h2>Our Music</h2>
-                    <p>Explore our latest releases and discover the sound that defines KB Music.</p>
+                    <p>Experience our latest releases directly from YouTube</p>
                 </div>
                 <div class="music-grid">
                     <div class="music-card fade-in">
-                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Kenyan+Vibes" alt="Album Cover" class="album-cover">
+                        <div class="youtube-player">
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/LmF61e-MwkE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
                         <div class="music-info">
                             <h3 class="music-title">Kenyan Vibes</h3>
-                            <div class="music-meta">Single • 2023</div>
-                            <a href="#" class="play-btn" data-audio="audio1">
-                                <i class="fas fa-play"></i>
-                            </a>
+                            <div class="music-meta">Single • 2025</div>
                         </div>
                     </div>
                     <div class="music-card fade-in">
-                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Nairobi+Nights" alt="Album Cover" class="album-cover">
+                        <div class="youtube-player">
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/jkS4OLX41Fc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
                         <div class="music-info">
                             <h3 class="music-title">Nairobi Nights</h3>
-                            <div class="music-meta">EP • 2023</div>
-                            <a href="#" class="play-btn" data-audio="audio2">
-                                <i class="fas fa-play"></i>
-                            </a>
+                            <div class="music-meta">EP • 2025</div>
                         </div>
                     </div>
                     <div class="music-card fade-in">
-                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Savannah+Rhythms" alt="Album Cover" class="album-cover">
+                        <div class="youtube-player">
+                            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/UfiA1vJ4gEI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
                         <div class="music-info">
                             <h3 class="music-title">Savannah Rhythms</h3>
-                            <div class="music-meta">Album • 2022</div>
-                            <a href="#" class="play-btn" data-audio="audio3">
-                                <i class="fas fa-play"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="music-card fade-in">
-                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Mombasa+Sunrise" alt="Album Cover" class="album-cover">
-                        <div class="music-info">
-                            <h3 class="music-title">Mombasa Sunrise</h3>
-                            <div class="music-meta">Single • 2022</div>
-                            <a href="#" class="play-btn" data-audio="audio4">
-                                <i class="fas fa-play"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="music-card fade-in">
-                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Maasai+Melodies" alt="Album Cover" class="album-cover">
-                        <div class="music-info">
-                            <h3 class="music-title">Maasai Melodies</h3>
-                            <div class="music-meta">EP • 2021</div>
-                            <a href="#" class="play-btn" data-audio="audio5">
-                                <i class="fas fa-play"></i>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="music-card fade-in">
-                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=First+Beat" alt="Album Cover" class="album-cover">
-                        <div class="music-info">
-                            <h3 class="music-title">First Beat</h3>
-                            <div class="music-meta">Album • 2020</div>
-                            <a href="#" class="play-btn" data-audio="audio6">
-                                <i class="fas fa-play"></i>
-                            </a>
+                            <div class="music-meta">Album • 2025</div>
                         </div>
                     </div>
                 </div>
@@ -1567,7 +2017,7 @@
                         </div>
                         <h3 class="event-service-title">Birthday Parties</h3>
                         <p>Create unforgettable birthday celebrations with our customized music and entertainment packages.</p>
-                        <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book Now</a>
+                        <a href="#" class="btn btn-outline" onclick="showPage('events')">Book Now</a>
                     </div>
                     <div class="event-service-card fade-in">
                         <div class="event-service-icon">
@@ -1575,7 +2025,7 @@
                         </div>
                         <h3 class="event-service-title">Weddings</h3>
                         <p>Make your special day perfect with our wedding music services, from ceremony to reception.</p>
-                        <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book Now</a>
+                        <a href="#" class="btn btn-outline" onclick="showPage('events')">Book Now</a>
                     </div>
                     <div class="event-service-card fade-in">
                         <div class="event-service-icon">
@@ -1583,7 +2033,7 @@
                         </div>
                         <h3 class="event-service-title">Corporate Events</h3>
                         <p>Professional entertainment solutions for conferences, galas, product launches, and corporate parties.</p>
-                        <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book Now</a>
+                        <a href="#" class="btn btn-outline" onclick="showPage('events')">Book Now</a>
                     </div>
                     <div class="event-service-card fade-in">
                         <div class="event-service-icon">
@@ -1591,7 +2041,7 @@
                         </div>
                         <h3 class="event-service-title">House Parties</h3>
                         <p>Transform your home into the ultimate party venue with our intimate event services.</p>
-                        <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book Now</a>
+                        <a href="#" class="btn btn-outline" onclick="showPage('events')">Book Now</a>
                     </div>
                     <div class="event-service-card fade-in">
                         <div class="event-service-icon">
@@ -1599,7 +2049,7 @@
                         </div>
                         <h3 class="event-service-title">Concerts & Festivals</h3>
                         <p>Stage production, sound engineering, and performance services for concerts and music festivals.</p>
-                        <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book Now</a>
+                        <a href="#" class="btn btn-outline" onclick="showPage('events')">Book Now</a>
                     </div>
                     <div class="event-service-card fade-in">
                         <div class="event-service-icon">
@@ -1607,7 +2057,7 @@
                         </div>
                         <h3 class="event-service-title">DJ Services</h3>
                         <p>Professional DJ sets for any occasion, with a vast music library and state-of-the-art equipment.</p>
-                        <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book Now</a>
+                        <a href="#" class="btn btn-outline" onclick="showPage('events')">Book Now</a>
                     </div>
                     <div class="event-service-card fade-in">
                         <div class="event-service-icon">
@@ -1615,7 +2065,7 @@
                         </div>
                         <h3 class="event-service-title">Live Performances</h3>
                         <p>Dynamic live performances by our talented artists, bands, and musicians for any event.</p>
-                        <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book Now</a>
+                        <a href="#" class="btn btn-outline" onclick="showPage('events')">Book Now</a>
                     </div>
                     <div class="event-service-card fade-in">
                         <div class="event-service-icon">
@@ -1623,7 +2073,7 @@
                         </div>
                         <h3 class="event-service-title">MC/Host Services</h3>
                         <p>Professional MCs and hosts to keep your event flowing smoothly and entertain your guests.</p>
-                        <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book Now</a>
+                        <a href="#" class="btn btn-outline" onclick="showPage('events')">Book Now</a>
                     </div>
                     <div class="event-service-card fade-in">
                         <div class="event-service-icon">
@@ -1631,7 +2081,7 @@
                         </div>
                         <h3 class="event-service-title">Sound System Rental</h3>
                         <p>High-quality audio equipment rental for events of all sizes, from small gatherings to large festivals.</p>
-                        <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book Now</a>
+                        <a href="#" class="btn btn-outline" onclick="showPage('events')">Book Now</a>
                     </div>
                     <div class="event-service-card fade-in">
                         <div class="event-service-icon">
@@ -1639,7 +2089,7 @@
                         </div>
                         <h3 class="event-service-title">Custom Entertainment Packages</h3>
                         <p>Tailored solutions combining multiple services for your specific event needs and budget.</p>
-                        <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book Now</a>
+                        <a href="#" class="btn btn-outline" onclick="showPage('events')">Book Now</a>
                     </div>
                 </div>
             </div>
@@ -1657,38 +2107,130 @@
                 <div class="events-timeline">
                     <div class="timeline-item fade-in">
                         <div class="timeline-content">
-                            <div class="event-date">July 15, 2023</div>
+                            <div class="event-date">July 15, 2025</div>
                             <h3>Nairobi Music Festival</h3>
                             <p>Main stage performance at the annual Nairobi Music Festival with thousands of attendees.</p>
                         </div>
                     </div>
                     <div class="timeline-item fade-in">
                         <div class="timeline-content">
-                            <div class="event-date">May 22, 2023</div>
+                            <div class="event-date">May 22, 2025</div>
                             <h3>Corporate Gala Event</h3>
                             <p>Live DJ set and musical entertainment for a high-profile corporate gala in Westlands, Nairobi.</p>
                         </div>
                     </div>
                     <div class="timeline-item fade-in">
                         <div class="timeline-content">
-                            <div class="event-date">March 10, 2023</div>
+                            <div class="event-date">March 10, 2025</div>
                             <h3>Wedding Celebration</h3>
                             <p>Custom music arrangement and performance for an elegant wedding reception in Karen.</p>
                         </div>
                     </div>
                     <div class="timeline-item fade-in">
                         <div class="timeline-content">
-                            <div class="event-date">December 31, 2022</div>
+                            <div class="event-date">December 31, 2025</div>
                             <h3>New Year's Eve Party</h3>
                             <p>Headlining Nairobi's premier New Year's Eve celebration with a special midnight countdown performance.</p>
                         </div>
                     </div>
                     <div class="timeline-item fade-in">
                         <div class="timeline-content">
-                            <div class="event-date">October 15, 2022</div>
+                            <div class="event-date">October 15, 2025</div>
                             <h3>Mombasa Beach Festival</h3>
                             <p>Live performance at the annual Mombasa Beach Festival, entertaining thousands of revelers.</p>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Event Booking Section -->
+        <section class="bg-dark">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Book an Event</h2>
+                    <p>Schedule your event with KB Music</p>
+                </div>
+                <div class="success-message" id="bookingSuccess">
+                    Thank you for your booking! We'll contact you shortly to confirm the details.
+                </div>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div>
+                                <h3>Available Dates</h3>
+                                <p>Select from available dates and times below</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h3>Event Duration</h3>
+                                <p>Most events are 3-4 hours, but we can customize based on your needs</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-music"></i>
+                            </div>
+                            <div>
+                                <h3>Music Selection</h3>
+                                <p>We'll work with you to create the perfect playlist for your event</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="eventBookingForm">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Your Name" required id="bookingName">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Your Email" required id="bookingEmail">
+                            </div>
+                            <div class="form-group">
+                                <input type="tel" class="form-control" placeholder="Your Phone" required id="bookingPhone">
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" required id="bookingEventType">
+                                    <option value="" disabled selected>Event Type</option>
+                                    <option value="birthday">Birthday Party</option>
+                                    <option value="wedding">Wedding</option>
+                                    <option value="corporate">Corporate Event</option>
+                                    <option value="house-party">House Party</option>
+                                    <option value="concert">Concert/Festival</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="calendar-container">
+                                <div class="calendar-header">
+                                    <button class="calendar-nav" id="prevMonth"><i class="fas fa-chevron-left"></i></button>
+                                    <h3 id="currentMonth">June 2023</h3>
+                                    <button class="calendar-nav" id="nextMonth"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                                <div class="calendar-grid">
+                                    <div class="calendar-day">Sun</div>
+                                    <div class="calendar-day">Mon</div>
+                                    <div class="calendar-day">Tue</div>
+                                    <div class="calendar-day">Wed</div>
+                                    <div class="calendar-day">Thu</div>
+                                    <div class="calendar-day">Fri</div>
+                                    <div class="calendar-day">Sat</div>
+                                    <!-- Calendar dates will be dynamically generated -->
+                                </div>
+                                <div class="time-slots" id="timeSlots">
+                                    <!-- Time slots will be dynamically generated -->
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" placeholder="Additional Details (venue, special requests, etc.)" id="bookingDetails"></textarea>
+                            </div>
+                            <button type="submit" class="btn">Book Event</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -1705,49 +2247,49 @@
                 </div>
                 <div class="gallery-grid">
                     <div class="gallery-item fade-in">
-                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Live+Performance" alt="Live Performance">
+                        <img src="images/download (5).jpg" alt="Live Performance">
                         <div class="gallery-overlay">
                             <div class="gallery-title">Live Performance</div>
                         </div>
                     </div>
                     <div class="gallery-item fade-in">
-                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Studio+Session" alt="Studio Session">
+                        <img src="images/Wiz Khalifa, at the studio.jpg" alt="Studio Session">
                         <div class="gallery-overlay">
                             <div class="gallery-title">Studio Session</div>
                         </div>
                     </div>
                     <div class="gallery-item fade-in">
-                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Behind+The+Scenes" alt="Behind The Scenes">
+                        <img src="images/36808dba-0ea6-4566-91cd-2fbe77ebdcfd.jpg" alt="Behind The Scenes">
                         <div class="gallery-overlay">
                             <div class="gallery-title">Behind The Scenes</div>
                         </div>
                     </div>
                     <div class="gallery-item fade-in">
-                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Event+Setup" alt="Event Setup">
+                        <img src="images/that one song.jpg" alt="Event Setup">
                         <div class="gallery-overlay">
                             <div class="gallery-title">Event Setup</div>
                         </div>
                     </div>
                     <div class="gallery-item fade-in">
-                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Crowd+Interaction" alt="Crowd Interaction">
+                        <img src="images/💥I think I like the people we’re becoming 💥 • • • • the people we became tour!! every artist set was amazing, the ambience, music and overall quality was amazing_ Got to rap with one of my favorite rappers .jpg" alt="Crowd Interaction">
                         <div class="gallery-overlay">
                             <div class="gallery-title">Crowd Interaction</div>
                         </div>
                     </div>
                     <div class="gallery-item fade-in">
-                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Sound+Check" alt="Sound Check">
+                        <img src="images/download (1).webp" alt="Sound Check">
                         <div class="gallery-overlay">
                             <div class="gallery-title">Sound Check</div>
                         </div>
                     </div>
                     <div class="gallery-item fade-in">
-                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Music+Video+Shoot" alt="Music Video Shoot">
+                        <img src="images/For a better Kenya 💪🏾🇰🇪.jpg" alt="Music Video Shoot">
                         <div class="gallery-overlay">
                             <div class="gallery-title">Music Video Shoot</div>
                         </div>
                     </div>
                     <div class="gallery-item fade-in">
-                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Album+Photoshoot" alt="Album Photoshoot">
+                        <img src="images/download (4).webp" alt="Album Photoshoot">
                         <div class="gallery-overlay">
                             <div class="gallery-title">Album Photoshoot</div>
                         </div>
@@ -1767,28 +2309,28 @@
                 </div>
                 <div class="blog-grid">
                     <div class="blog-card fade-in">
-                        <img src="https://via.placeholder.com/300x200/0A0A0A/D4AF37?text=New+Release" alt="Blog Image" class="blog-image">
+                        <img src="images/084a5c7d-5a14-4742-88c2-0c3dd6c56b65.jpg" alt="Blog Image" class="blog-image">
                         <div class="blog-info">
                             <h3 class="blog-title">New Single "Kenyan Vibes" Out Now</h3>
-                            <div class="blog-date">June 15, 2023</div>
+                            <div class="blog-date">June 15, 2025</div>
                             <p class="blog-excerpt">Our latest single "Kenyan Vibes" is now available on all streaming platforms. Get ready for the perfect anthem celebrating Kenyan culture!</p>
                             <a href="#" class="btn btn-outline">Read More</a>
                         </div>
                     </div>
                     <div class="blog-card fade-in">
-                        <img src="https://via.placeholder.com/300x200/0A0A0A/D4AF37?text=Studio+Update" alt="Blog Image" class="blog-image">
+                        <img src="images/Analogue Studio.jpg" alt="Blog Image" class="blog-image">
                         <div class="blog-info">
                             <h3 class="blog-title">Nairobi Studio Upgrade Complete</h3>
-                            <div class="blog-date">May 28, 2023</div>
+                            <div class="blog-date">May 28, 2025</div>
                             <p class="blog-excerpt">We've completed our Nairobi studio upgrade with state-of-the-art equipment to deliver even better sound quality for our artists.</p>
                             <a href="#" class="btn btn-outline">Read More</a>
                         </div>
                     </div>
                     <div class="blog-card fade-in">
-                        <img src="https://via.placeholder.com/300x200/0A0A0A/D4AF37?text=Event+Highlight" alt="Blog Image" class="blog-image">
+                        <img src="images/Back like we never left 🏹✨ #afrotonikdanceparty….jpg" alt="Blog Image" class="blog-image">
                         <div class="blog-info">
                             <h3 class="blog-title">Nairobi Festival Lineup Announcement</h3>
-                            <div class="blog-date">April 10, 2023</div>
+                            <div class="blog-date">April 10, 2025</div>
                             <p class="blog-excerpt">We're excited to announce that KB Music will be performing at this year's Nairobi Music Festival!</p>
                             <a href="#" class="btn btn-outline">Read More</a>
                         </div>
@@ -1808,35 +2350,35 @@
                 </div>
                 <div class="shop-grid">
                     <div class="product-card fade-in">
-                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=KB+Music+T-Shirt" alt="Product Image" class="product-image">
+                        <img src="images/ChatGPT Image Oct 24, 2025, 09_26_36 AM.png" alt="Product Image" class="product-image">
                         <div class="product-info">
                             <h3 class="product-title">KB Music T-Shirt</h3>
                             <div class="product-price">KES 2,500</div>
-                            <a href="#" class="btn btn-outline">Add to Cart</a>
+                            <button class="btn btn-outline" onclick="addToCart(1, 'KB Music T-Shirt', 2500, 'https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=KB+Music+T-Shirt')">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card fade-in">
-                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=KB+Music+Hoodie" alt="Product Image" class="product-image">
+                        <img src="images/ChatGPT Image Oct 24, 2025, 09_17_35 AM.png" alt="Product Image" class="product-image">
                         <div class="product-info">
                             <h3 class="product-title">KB Music Hoodie</h3>
                             <div class="product-price">KES 4,500</div>
-                            <a href="#" class="btn btn-outline">Add to Cart</a>
+                            <button class="btn btn-outline" onclick="addToCart(2, 'KB Music Hoodie', 4500, 'https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=KB+Music+Hoodie')">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card fade-in">
-                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=KB+Music+Cap" alt="Product Image" class="product-image">
+                        <img src="images/ChatGPT Image Oct 24, 2025, 09_39_23 AM.png" alt="Product Image" class="product-image">
                         <div class="product-info">
                             <h3 class="product-title">KB Music Cap</h3>
                             <div class="product-price">KES 2,000</div>
-                            <a href="#" class="btn btn-outline">Add to Cart</a>
+                            <button class="btn btn-outline" onclick="addToCart(3, 'KB Music Cap', 2000, 'https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=KB+Music+Cap')">Add to Cart</button>
                         </div>
                     </div>
                     <div class="product-card fade-in">
-                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=KB+Music+Stickers" alt="Product Image" class="product-image">
+                        <img src="images/ChatGPT Image Oct 24, 2025, 09_55_31 AM.png" alt="Product Image" class="product-image">
                         <div class="product-info">
                             <h3 class="product-title">KB Music Sticker Pack</h3>
                             <div class="product-price">KES 800</div>
-                            <a href="#" class="btn btn-outline">Add to Cart</a>
+                            <button class="btn btn-outline" onclick="addToCart(4, 'KB Music Sticker Pack', 800, 'https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=KB+Music+Stickers')">Add to Cart</button>
                         </div>
                     </div>
                 </div>
@@ -1869,7 +2411,7 @@
                             </div>
                             <div>
                                 <h3>Phone</h3>
-                                <p>+254 712 345 678</p>
+                                <p>+254 799 772 894</p>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -1977,38 +2519,12 @@
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2023 KB Music, Founded by Kraizy Bwoy in Nairobi, Kenya. All Rights Reserved.</p>
+                <p>&copy; 2025 KB Music, Kenya Designed by Alexander N. Kathanzu. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Music Player -->
-    <div class="music-player" id="musicPlayer">
-        <div class="player-header">
-            <div class="player-title" id="playerTitle">Now Playing</div>
-            <button class="close-player" id="closePlayer">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div class="player-controls">
-            <button class="control-btn" id="prevBtn">
-                <i class="fas fa-step-backward"></i>
-            </button>
-            <button class="control-btn play-pause" id="playPauseBtn">
-                <i class="fas fa-play" id="playIcon"></i>
-            </button>
-            <button class="control-btn" id="nextBtn">
-                <i class="fas fa-step-forward"></i>
-            </button>
-        </div>
-        <div class="progress-bar">
-            <div class="progress" id="progress"></div>
-        </div>
-        <div class="player-time">
-            <span id="currentTime">0:00</span>
-            <span id="duration">0:00</span>
-        </div>
-    </div>
+    <!-- Music Player - Removed as we're using YouTube embeds -->
 
     <script>
         // Page Navigation
@@ -2118,110 +2634,6 @@
             titleObserver.observe(title);
         });
 
-        // Music player functionality
-        const musicPlayer = document.getElementById('musicPlayer');
-        const playPauseBtn = document.getElementById('playPauseBtn');
-        const playIcon = document.getElementById('playIcon');
-        const closePlayer = document.getElementById('closePlayer');
-        const progress = document.getElementById('progress');
-        const currentTime = document.getElementById('currentTime');
-        const duration = document.getElementById('duration');
-        const playerTitle = document.getElementById('playerTitle');
-        
-        let isPlaying = false;
-        let currentAudio = null;
-        
-        // Play buttons event listeners
-        document.querySelectorAll('.play-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                const audioId = btn.getAttribute('data-audio');
-                const musicTitle = btn.closest('.music-card').querySelector('.music-title').textContent;
-                
-                // If clicking the same song, toggle play/pause
-                if (currentAudio === audioId) {
-                    togglePlayPause();
-                } else {
-                    // Otherwise, play new song
-                    playAudio(audioId, musicTitle);
-                }
-            });
-        });
-        
-        function playAudio(audioId, title) {
-            // Stop current audio if playing
-            if (currentAudio && isPlaying) {
-                togglePlayPause();
-            }
-            
-            // Set new audio
-            currentAudio = audioId;
-            playerTitle.textContent = title;
-            
-            // Show player
-            musicPlayer.classList.add('active');
-            
-            // Simulate playing (in a real implementation, this would control an actual audio element)
-            isPlaying = true;
-            playIcon.classList.remove('fa-play');
-            playIcon.classList.add('fa-pause');
-            
-            // Simulate progress (in a real implementation, this would come from the audio element)
-            let progressValue = 0;
-            const progressInterval = setInterval(() => {
-                if (!isPlaying) {
-                    clearInterval(progressInterval);
-                    return;
-                }
-                
-                progressValue += 0.5;
-                progress.style.width = `${progressValue}%`;
-                
-                // Update time display
-                const currentSeconds = Math.floor(progressValue * 180 / 100);
-                const minutes = Math.floor(currentSeconds / 60);
-                const seconds = currentSeconds % 60;
-                currentTime.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-                
-                if (progressValue >= 100) {
-                    clearInterval(progressInterval);
-                    isPlaying = false;
-                    playIcon.classList.remove('fa-pause');
-                    playIcon.classList.add('fa-play');
-                    progress.style.width = '0%';
-                    currentTime.textContent = '0:00';
-                }
-            }, 500);
-            
-            // Set duration (simulated)
-            duration.textContent = '3:00';
-        }
-        
-        function togglePlayPause() {
-            isPlaying = !isPlaying;
-            
-            if (isPlaying) {
-                playIcon.classList.remove('fa-play');
-                playIcon.classList.add('fa-pause');
-                // In a real implementation, you would call audioElement.play() here
-            } else {
-                playIcon.classList.remove('fa-pause');
-                playIcon.classList.add('fa-play');
-                // In a real implementation, you would call audioElement.pause() here
-            }
-        }
-        
-        playPauseBtn.addEventListener('click', togglePlayPause);
-        
-        closePlayer.addEventListener('click', () => {
-            musicPlayer.classList.remove('active');
-            isPlaying = false;
-            playIcon.classList.remove('fa-pause');
-            playIcon.classList.add('fa-play');
-            progress.style.width = '0%';
-            currentTime.textContent = '0:00';
-        });
-
         // Form submission
         document.getElementById('bookingForm').addEventListener('submit', (e) => {
             e.preventDefault();
@@ -2241,6 +2653,230 @@
                 pageTransition.classList.remove('active');
             }, 1500);
         });
+
+        // Shopping Cart Functionality
+        let cart = JSON.parse(localStorage.getItem('kbMusicCart')) || [];
+        const cartModal = document.getElementById('cartModal');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const cartItems = document.getElementById('cartItems');
+        const cartCount = document.getElementById('cartCount');
+        const cartTotal = document.getElementById('cartTotal');
+        let selectedPaymentMethod = null;
+
+        function toggleCart() {
+            cartModal.classList.toggle('active');
+            cartOverlay.classList.toggle('active');
+            if (cartModal.classList.contains('active')) {
+                renderCart();
+                // Reset payment selection when opening cart
+                resetPaymentSelection();
+            }
+        }
+
+        function addToCart(id, name, price, image) {
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: id,
+                    name: name,
+                    price: price,
+                    image: image,
+                    quantity: 1
+                });
+            }
+            
+            updateCart();
+            toggleCart();
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCart();
+        }
+
+        function updateQuantity(id, quantity) {
+            if (quantity <= 0) {
+                removeFromCart(id);
+                return;
+            }
+            
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity = quantity;
+                updateCart();
+            }
+        }
+
+        function updateCart() {
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.textContent = totalItems;
+            
+            // Save to localStorage
+            localStorage.setItem('kbMusicCart', JSON.stringify(cart));
+            
+            // Update cart display if open
+            if (cartModal.classList.contains('active')) {
+                renderCart();
+            }
+        }
+
+        function renderCart() {
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p>Your cart is empty</p>';
+                cartTotal.textContent = 'KES 0';
+                return;
+            }
+            
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <h4 class="cart-item-title">${item.name}</h4>
+                        <div class="cart-item-price">KES ${item.price.toLocaleString()}</div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, ${item.quantity - 1})">-</button>
+                            <input type="number" class="quantity-input" value="${item.quantity}" min="1" onchange="updateQuantity(${item.id}, parseInt(this.value))">
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, ${item.quantity + 1})">+</button>
+                            <button class="remove-item" onclick="removeFromCart(${item.id})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                
+                cartItems.appendChild(cartItem);
+            });
+            
+            cartTotal.textContent = `KES ${total.toLocaleString()}`;
+        }
+
+        // Payment Methods Functionality
+        function selectPaymentMethod(method) {
+            // Remove selected class from all payment methods
+            document.querySelectorAll('.payment-method').forEach(pm => {
+                pm.classList.remove('selected');
+            });
+            
+            // Hide all payment details
+            document.querySelectorAll('.payment-details').forEach(details => {
+                details.classList.remove('active');
+            });
+            
+            // Add selected class to clicked method
+            const selectedElement = document.querySelector(`.payment-method:nth-child(${getPaymentMethodIndex(method)})`);
+            selectedElement.classList.add('selected');
+            
+            // Show corresponding payment details
+            document.getElementById(`${method}Details`).classList.add('active');
+            
+            // Store selected payment method
+            selectedPaymentMethod = method;
+        }
+
+        function getPaymentMethodIndex(method) {
+            const methods = ['mpesa', 'card', 'paypal'];
+            return methods.indexOf(method) + 1;
+        }
+
+        function resetPaymentSelection() {
+            // Remove selected class from all payment methods
+            document.querySelectorAll('.payment-method').forEach(pm => {
+                pm.classList.remove('selected');
+            });
+            
+            // Hide all payment details
+            document.querySelectorAll('.payment-details').forEach(details => {
+                details.classList.remove('active');
+            });
+            
+            // Reset selected payment method
+            selectedPaymentMethod = null;
+        }
+
+        // Payment Processing Functions
+        function processMpesaPayment() {
+            const phone = document.getElementById('mpesaPhone').value;
+            
+            if (!phone) {
+                alert('Please enter your M-Pesa phone number');
+                return;
+            }
+            
+            if (cart.length === 0) {
+                alert('Your cart is empty');
+                return;
+            }
+            
+            // Simulate M-Pesa payment processing
+            alert(`M-Pesa payment request sent to ${phone}. Please check your phone to complete the payment.`);
+            
+            // In a real implementation, you would integrate with M-Pesa API here
+            
+            // Clear cart after successful payment
+            cart = [];
+            updateCart();
+            toggleCart();
+        }
+
+        function processCardPayment() {
+            const cardNumber = document.getElementById('cardNumber').value;
+            const cardName = document.getElementById('cardName').value;
+            const cardExpiry = document.getElementById('cardExpiry').value;
+            const cardCVC = document.getElementById('cardCVC').value;
+            
+            if (!cardNumber || !cardName || !cardExpiry || !cardCVC) {
+                alert('Please fill in all card details');
+                return;
+            }
+            
+            if (cart.length === 0) {
+                alert('Your cart is empty');
+                return;
+            }
+            
+            // Simulate card payment processing
+            alert('Processing card payment...');
+            
+            // In a real implementation, you would integrate with a payment gateway here
+            
+            // Clear cart after successful payment
+            cart = [];
+            updateCart();
+            toggleCart();
+        }
+
+        function processPayPalPayment() {
+            if (cart.length === 0) {
+                alert('Your cart is empty');
+                return;
+            }
+            
+            // Simulate PayPal payment processing
+            alert('Redirecting to PayPal...');
+            
+            // In a real implementation, you would redirect to PayPal or use PayPal API
+            
+            // Clear cart after successful payment
+            cart = [];
+            updateCart();
+            toggleCart();
+        }
+
+        // Initialize cart on page load
+        updateCart();
     </script>
 </body>
 </html>
