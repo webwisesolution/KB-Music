@@ -1,0 +1,2246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KB Music - Where Sound Meets Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables for Theme */
+        :root {
+            --primary: #0A0A0A;
+            --accent: #D4AF37;
+            --secondary: #FFFFFF;
+            --highlight: #B8860B;
+            --dark-gold: #9B870C;
+            --gray: #1A1A1A;
+            --kenya-green: #006600;
+            --kenya-red: #BB0000;
+            --kenya-black: #000000;
+        }
+
+        /* Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--primary);
+            color: var(--secondary);
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .background-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: var(--accent);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                transform: translateY(-20px) translateX(10px);
+            }
+            100% {
+                transform: translateY(0) translateX(0);
+            }
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(to right, var(--accent), var(--highlight));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px rgba(212, 175, 55, 0.5);
+            }
+            to {
+                text-shadow: 0 0 15px rgba(212, 175, 55, 0.8), 0 0 20px rgba(212, 175, 55, 0.6);
+            }
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent), var(--highlight));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        h2.in-view::after {
+            transform: scaleX(1);
+        }
+
+        p {
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Layout */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .header-scrolled {
+            padding: 10px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+            margin-right: 10px;
+            filter: drop-shadow(0 0 5px var(--accent));
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-decoration: none;
+        }
+
+        .logo-text span {
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-left: 30px;
+        }
+
+        .nav-link {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--accent);
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--accent);
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 0.8s;
+        }
+
+        .hero-btns {
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards 1.1s;
+        }
+
+        .hero-btns .btn {
+            margin: 0 10px;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title p {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .founder-image {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .founder-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .founder-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .founder-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.1));
+            z-index: 1;
+        }
+
+        .founder-name {
+            color: var(--accent);
+            font-size: 1.5rem;
+            margin-top: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .founder-name::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--accent);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .founder-image:hover .founder-name::after {
+            transform: scaleX(1);
+        }
+
+        /* Music Section */
+        .music-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .music-card {
+            background-color: var(--gray);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .music-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .music-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(212, 175, 55, 0.1));
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .music-card:hover::before {
+            opacity: 1;
+        }
+
+        .album-cover {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .music-info {
+            padding: 20px;
+        }
+
+        .music-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .music-meta {
+            color: #999;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .play-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent);
+            color: var(--primary);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px var(--accent);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--gray);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent), var(--highlight));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1);
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* Events Section */
+        .events-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .events-timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background-color: var(--accent);
+        }
+
+        .timeline-item {
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            padding-right: 50%;
+        }
+
+        .timeline-item:nth-child(even) {
+            padding-left: 50%;
+        }
+
+        .timeline-content {
+            background-color: var(--gray);
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent);
+            border-radius: 50%;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -10px;
+        }
+
+        .event-date {
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        /* Gallery Section */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, rgba(10, 10, 10, 0.8));
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-title {
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: var(--gray);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .contact-form {
+            background-color: var(--gray);
+            padding: 30px;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--primary);
+            border: 1px solid #333;
+            border-radius: 5px;
+            color: var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--gray);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .footer-logo span {
+            color: var(--accent);
+        }
+
+        .footer-description {
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary);
+            color: var(--accent);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background-color: var(--accent);
+            color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-heading {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-heading::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 30px;
+            height: 2px;
+            background-color: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-link {
+            margin-bottom: 10px;
+        }
+
+        .footer-link a {
+            color: #999;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-link a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            color: #999;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding: 0 0 0 50px;
+            }
+            
+            .events-timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-content::before {
+                left: -10px !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: var(--primary);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 20px 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                margin: 15px 0;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        /* Page Transitions */
+        .page-transition {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--primary);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.5s ease;
+        }
+
+        .page-transition.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .transition-logo {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.1);
+                opacity: 0.7;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        /* Scroll Animation Classes */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Music Player */
+        .music-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--gray);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            width: 300px;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .music-player.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .player-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .player-title {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .close-player {
+            background: none;
+            border: none;
+            color: var(--secondary);
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .control-btn {
+            background: none;
+            border: none;
+            color: var(--secondary);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .control-btn:hover {
+            color: var(--accent);
+        }
+
+        .play-pause {
+            width: 40px;
+            height: 40px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 5px;
+            background-color: #333;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress {
+            width: 0%;
+            height: 100%;
+            background-color: var(--accent);
+            transition: width 0.1s linear;
+        }
+
+        .player-time {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        /* Page Styles */
+        .page {
+            display: none;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Shop Styles */
+        .shop-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--gray);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .product-price {
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        /* Blog Styles */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-card {
+            background-color: var(--gray);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-info {
+            padding: 20px;
+        }
+
+        .blog-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .blog-date {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .blog-excerpt {
+            margin-bottom: 15px;
+        }
+
+        /* Kenya Flag Element */
+        .kenya-flag {
+            display: inline-flex;
+            align-items: center;
+            margin-left: 10px;
+        }
+
+        .kenya-stripe {
+            width: 10px;
+            height: 20px;
+            margin: 0 2px;
+        }
+
+        .kenya-black { background-color: var(--kenya-black); }
+        .kenya-red { background-color: var(--kenya-red); }
+        .kenya-green { background-color: var(--kenya-green); }
+
+        /* Event Services Grid */
+        .event-services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .event-service-card {
+            background-color: var(--gray);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent), var(--highlight));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+
+        .event-service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .event-service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .event-service-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .event-service-card:hover .event-service-icon {
+            transform: scale(1.1);
+        }
+
+        .event-service-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="background-animation" id="particles"></div>
+
+    <!-- Page Transition -->
+    <div class="page-transition" id="pageTransition">
+        <div class="transition-logo">KB Music</div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav class="nav-container">
+                <a href="#" class="logo" onclick="showPage('home')">
+                    <div class="logo-text">KB <span>Music</span></div>
+                </a>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showPage('home')">Home</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showPage('about')">About</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showPage('music')">Music</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showPage('services')">Services</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showPage('events')">Events</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showPage('gallery')">Gallery</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showPage('blog')">Blog</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showPage('shop')">Shop</a></li>
+                    <li class="nav-item"><a href="#" class="nav-link" onclick="showPage('contact')">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Home Page -->
+    <div id="home" class="page active">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>KB Music</h1>
+                <p>Where Sound Meets Experience</p>
+                <p>From the heart of Kenya, KB Music is dedicated to elevating music and creating unforgettable event experiences.</p>
+                <div class="hero-btns">
+                    <a href="#" class="btn" onclick="showPage('music')">Listen Now</a>
+                    <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book an Event</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="featured-music">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Featured Music</h2>
+                    <p>Check out our latest releases</p>
+                </div>
+                <div class="music-grid">
+                    <div class="music-card fade-in">
+                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Kenyan+Vibes" alt="Album Cover" class="album-cover">
+                        <div class="music-info">
+                            <h3 class="music-title">Kenyan Vibes</h3>
+                            <div class="music-meta">Single • 2023</div>
+                            <a href="#" class="play-btn" data-audio="audio1">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="music-card fade-in">
+                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Nairobi+Nights" alt="Album Cover" class="album-cover">
+                        <div class="music-info">
+                            <h3 class="music-title">Nairobi Nights</h3>
+                            <div class="music-meta">EP • 2023</div>
+                            <a href="#" class="play-btn" data-audio="audio2">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="music-card fade-in">
+                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Savannah+Rhythms" alt="Album Cover" class="album-cover">
+                        <div class="music-info">
+                            <h3 class="music-title">Savannah Rhythms</h3>
+                            <div class="music-meta">Album • 2022</div>
+                            <a href="#" class="play-btn" data-audio="audio3">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="featured-services" class="bg-dark">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Services</h2>
+                    <p>We offer a wide range of music and event services</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3 class="service-title">Music Production</h3>
+                        <p>Professional studio sessions, mixing, and mastering services to bring your musical ideas to life.</p>
+                        <a href="#" class="btn btn-outline" onclick="showPage('services')">Learn More</a>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="service-title">Artist Development</h3>
+                        <p>Coaching, branding, and career guidance to help artists reach their full potential.</p>
+                        <a href="#" class="btn btn-outline" onclick="showPage('services')">Learn More</a>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <h3 class="service-title">Event Services</h3>
+                        <p>Complete entertainment packages for weddings, corporate events, parties, and more.</p>
+                        <a href="#" class="btn btn-outline" onclick="showPage('services')">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="upcoming-events">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Upcoming Events</h2>
+                    <p>Don't miss our next performances</p>
+                </div>
+                <div class="events-timeline">
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-content">
+                            <div class="event-date">July 15, 2023</div>
+                            <h3>Nairobi Music Festival</h3>
+                            <p>Main stage performance at the annual Nairobi Music Festival with thousands of attendees.</p>
+                            <a href="#" class="btn btn-outline" onclick="showPage('events')">More Info</a>
+                        </div>
+                    </div>
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-content">
+                            <div class="event-date">August 22, 2023</div>
+                            <h3>Club Residency</h3>
+                            <p>Weekly DJ set at Nairobi's premier nightclub every Friday night.</p>
+                            <a href="#" class="btn btn-outline" onclick="showPage('events')">More Info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="bg-dark">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Testimonials</h2>
+                    <p>What our clients say</p>
+                </div>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card fade-in">
+                        <div class="testimonial-text">
+                            <p>"KB Music transformed our wedding into an unforgettable experience. The music was perfect!"</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>John & Jane Kamau</h4>
+                            <p>Wedding Clients</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-card fade-in">
+                        <div class="testimonial-text">
+                            <p>"The energy at our corporate event was incredible thanks to KB Music's performance."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>Sarah Wanjiku</h4>
+                            <p>Corporate Client</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-card fade-in">
+                        <div class="testimonial-text">
+                            <p>"Working with KB Music on my album was a game-changer. Their production quality is top-notch."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <h4>Alex Mwangi</h4>
+                            <p>Recording Artist</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cta">
+            <div class="container">
+                <div class="cta-content">
+                    <h2>Ready to Create Something Amazing?</h2>
+                    <p>Contact us today to discuss your project or event.</p>
+                    <a href="#" class="btn" onclick="showPage('contact')">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page">
+        <section>
+            <div class="container">
+                <div class="section-title">
+                    <h2>About KB Music</h2>
+                    <p>Discover the story behind the music and the vision that drives us forward.</p>
+                </div>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Our Kenyan Story</h3>
+                        <p>KB Music was founded by Kraizy Bwoy in Nairobi, Kenya with a simple yet powerful vision: to create exceptional musical experiences that resonate with audiences and elevate events to new heights.</p>
+                        <p>What started as a passion project has grown into a full-service music brand, offering everything from music production to live performances and event services across Kenya and beyond.</p>
+                        <h3>Mission & Vision</h3>
+                        <p>Our mission is to elevate music and create unforgettable event experiences through innovation, creativity, and technical excellence.</p>
+                        <p>We envision a world where every event is transformed by the power of exceptional sound and musical artistry, showcasing the best of Kenyan talent.</p>
+                    </div>
+                    <div class="founder-spotlight">
+                        <div class="founder-image">
+                            <img src="https://via.placeholder.com/500x600/0A0A0A/D4AF37?text=Kraizy+Bwoy" alt="Kraizy Bwoy">
+                            <div class="founder-name">Kraizy Bwoy</div>
+                        </div>
+                        <p>Founder & Creative Director</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="milestones" class="bg-dark">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Brand Milestones</h2>
+                    <p>Key achievements and milestones in our journey</p>
+                </div>
+                <div class="milestones-timeline">
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-content">
+                            <div class="milestone-date">2023</div>
+                            <h3>Nairobi Music Festival Headline</h3>
+                            <p>Headlined the main stage at the annual Nairobi Music Festival.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-content">
+                            <div class="milestone-date">2022</div>
+                            <h3>First Album Release</h3>
+                            <p>Released our first full-length album "Savannah Rhythms".</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-content">
+                            <div class="milestone-date">2021</div>
+                            <h3>Studio Expansion</h3>
+                            <p>Expanded our Nairobi studio facilities with state-of-the-art equipment.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-content">
+                            <div class="milestone-date">2020</div>
+                            <h3>KB Music Founded</h3>
+                            <p>KB Music was officially founded by Kraizy Bwoy in Nairobi, Kenya.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Music Page -->
+    <div id="music" class="page">
+        <section>
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Music</h2>
+                    <p>Explore our latest releases and discover the sound that defines KB Music.</p>
+                </div>
+                <div class="music-grid">
+                    <div class="music-card fade-in">
+                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Kenyan+Vibes" alt="Album Cover" class="album-cover">
+                        <div class="music-info">
+                            <h3 class="music-title">Kenyan Vibes</h3>
+                            <div class="music-meta">Single • 2023</div>
+                            <a href="#" class="play-btn" data-audio="audio1">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="music-card fade-in">
+                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Nairobi+Nights" alt="Album Cover" class="album-cover">
+                        <div class="music-info">
+                            <h3 class="music-title">Nairobi Nights</h3>
+                            <div class="music-meta">EP • 2023</div>
+                            <a href="#" class="play-btn" data-audio="audio2">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="music-card fade-in">
+                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Savannah+Rhythms" alt="Album Cover" class="album-cover">
+                        <div class="music-info">
+                            <h3 class="music-title">Savannah Rhythms</h3>
+                            <div class="music-meta">Album • 2022</div>
+                            <a href="#" class="play-btn" data-audio="audio3">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="music-card fade-in">
+                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Mombasa+Sunrise" alt="Album Cover" class="album-cover">
+                        <div class="music-info">
+                            <h3 class="music-title">Mombasa Sunrise</h3>
+                            <div class="music-meta">Single • 2022</div>
+                            <a href="#" class="play-btn" data-audio="audio4">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="music-card fade-in">
+                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Maasai+Melodies" alt="Album Cover" class="album-cover">
+                        <div class="music-info">
+                            <h3 class="music-title">Maasai Melodies</h3>
+                            <div class="music-meta">EP • 2021</div>
+                            <a href="#" class="play-btn" data-audio="audio5">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="music-card fade-in">
+                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=First+Beat" alt="Album Cover" class="album-cover">
+                        <div class="music-info">
+                            <h3 class="music-title">First Beat</h3>
+                            <div class="music-meta">Album • 2020</div>
+                            <a href="#" class="play-btn" data-audio="audio6">
+                                <i class="fas fa-play"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Services Page -->
+    <div id="services" class="page">
+        <section>
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Services</h2>
+                    <p>Comprehensive music and entertainment solutions for every need</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <h3 class="service-title">Music Production</h3>
+                        <p>Professional studio sessions, mixing, and mastering services to bring your musical ideas to life.</p>
+                        <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book Now</a>
+                    </div>
+                    <div class="service-card fade-in">
+                        <div class="service-icon">
+                            <i class="fas fa-user-tie"></i>
+                        </div>
+                        <h3 class="service-title">Artist Development</h3>
+                        <p>Coaching, branding, and career guidance to help artists reach their full potential.</p>
+                        <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book Now</a>
+                    </div>
+                </div>
+
+                <div class="section-title" style="margin-top: 80px;">
+                    <h2>Event Services</h2>
+                    <p>Complete entertainment solutions for all types of events</p>
+                </div>
+                <div class="event-services-grid">
+                    <div class="event-service-card fade-in">
+                        <div class="event-service-icon">
+                            <i class="fas fa-birthday-cake"></i>
+                        </div>
+                        <h3 class="event-service-title">Birthday Parties</h3>
+                        <p>Create unforgettable birthday celebrations with our customized music and entertainment packages.</p>
+                        <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book Now</a>
+                    </div>
+                    <div class="event-service-card fade-in">
+                        <div class="event-service-icon">
+                            <i class="fas fa-ring"></i>
+                        </div>
+                        <h3 class="event-service-title">Weddings</h3>
+                        <p>Make your special day perfect with our wedding music services, from ceremony to reception.</p>
+                        <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book Now</a>
+                    </div>
+                    <div class="event-service-card fade-in">
+                        <div class="event-service-icon">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3 class="event-service-title">Corporate Events</h3>
+                        <p>Professional entertainment solutions for conferences, galas, product launches, and corporate parties.</p>
+                        <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book Now</a>
+                    </div>
+                    <div class="event-service-card fade-in">
+                        <div class="event-service-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h3 class="event-service-title">House Parties</h3>
+                        <p>Transform your home into the ultimate party venue with our intimate event services.</p>
+                        <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book Now</a>
+                    </div>
+                    <div class="event-service-card fade-in">
+                        <div class="event-service-icon">
+                            <i class="fas fa-guitar"></i>
+                        </div>
+                        <h3 class="event-service-title">Concerts & Festivals</h3>
+                        <p>Stage production, sound engineering, and performance services for concerts and music festivals.</p>
+                        <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book Now</a>
+                    </div>
+                    <div class="event-service-card fade-in">
+                        <div class="event-service-icon">
+                            <i class="fas fa-compact-disc"></i>
+                        </div>
+                        <h3 class="event-service-title">DJ Services</h3>
+                        <p>Professional DJ sets for any occasion, with a vast music library and state-of-the-art equipment.</p>
+                        <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book Now</a>
+                    </div>
+                    <div class="event-service-card fade-in">
+                        <div class="event-service-icon">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <h3 class="event-service-title">Live Performances</h3>
+                        <p>Dynamic live performances by our talented artists, bands, and musicians for any event.</p>
+                        <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book Now</a>
+                    </div>
+                    <div class="event-service-card fade-in">
+                        <div class="event-service-icon">
+                            <i class="fas fa-user-friends"></i>
+                        </div>
+                        <h3 class="event-service-title">MC/Host Services</h3>
+                        <p>Professional MCs and hosts to keep your event flowing smoothly and entertain your guests.</p>
+                        <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book Now</a>
+                    </div>
+                    <div class="event-service-card fade-in">
+                        <div class="event-service-icon">
+                            <i class="fas fa-volume-up"></i>
+                        </div>
+                        <h3 class="event-service-title">Sound System Rental</h3>
+                        <p>High-quality audio equipment rental for events of all sizes, from small gatherings to large festivals.</p>
+                        <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book Now</a>
+                    </div>
+                    <div class="event-service-card fade-in">
+                        <div class="event-service-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="event-service-title">Custom Entertainment Packages</h3>
+                        <p>Tailored solutions combining multiple services for your specific event needs and budget.</p>
+                        <a href="#" class="btn btn-outline" onclick="showPage('contact')">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Events Page -->
+    <div id="events" class="page">
+        <section>
+            <div class="container">
+                <div class="section-title">
+                    <h2>Events & Past Gigs</h2>
+                    <p>Take a look at our previous performances and upcoming events.</p>
+                </div>
+                <div class="events-timeline">
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-content">
+                            <div class="event-date">July 15, 2023</div>
+                            <h3>Nairobi Music Festival</h3>
+                            <p>Main stage performance at the annual Nairobi Music Festival with thousands of attendees.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-content">
+                            <div class="event-date">May 22, 2023</div>
+                            <h3>Corporate Gala Event</h3>
+                            <p>Live DJ set and musical entertainment for a high-profile corporate gala in Westlands, Nairobi.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-content">
+                            <div class="event-date">March 10, 2023</div>
+                            <h3>Wedding Celebration</h3>
+                            <p>Custom music arrangement and performance for an elegant wedding reception in Karen.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-content">
+                            <div class="event-date">December 31, 2022</div>
+                            <h3>New Year's Eve Party</h3>
+                            <p>Headlining Nairobi's premier New Year's Eve celebration with a special midnight countdown performance.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item fade-in">
+                        <div class="timeline-content">
+                            <div class="event-date">October 15, 2022</div>
+                            <h3>Mombasa Beach Festival</h3>
+                            <p>Live performance at the annual Mombasa Beach Festival, entertaining thousands of revelers.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Gallery Page -->
+    <div id="gallery" class="page">
+        <section>
+            <div class="container">
+                <div class="section-title">
+                    <h2>Gallery</h2>
+                    <p>Visual moments from our studio sessions, live performances, and behind the scenes.</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item fade-in">
+                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Live+Performance" alt="Live Performance">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Live Performance</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade-in">
+                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Studio+Session" alt="Studio Session">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Studio Session</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade-in">
+                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Behind+The+Scenes" alt="Behind The Scenes">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Behind The Scenes</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade-in">
+                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Event+Setup" alt="Event Setup">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Event Setup</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade-in">
+                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Crowd+Interaction" alt="Crowd Interaction">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Crowd Interaction</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade-in">
+                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Sound+Check" alt="Sound Check">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Sound Check</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade-in">
+                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Music+Video+Shoot" alt="Music Video Shoot">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Music Video Shoot</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item fade-in">
+                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=Album+Photoshoot" alt="Album Photoshoot">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">Album Photoshoot</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Blog Page -->
+    <div id="blog" class="page">
+        <section>
+            <div class="container">
+                <div class="section-title">
+                    <h2>News & Blog</h2>
+                    <p>Stay updated with the latest from KB Music</p>
+                </div>
+                <div class="blog-grid">
+                    <div class="blog-card fade-in">
+                        <img src="https://via.placeholder.com/300x200/0A0A0A/D4AF37?text=New+Release" alt="Blog Image" class="blog-image">
+                        <div class="blog-info">
+                            <h3 class="blog-title">New Single "Kenyan Vibes" Out Now</h3>
+                            <div class="blog-date">June 15, 2023</div>
+                            <p class="blog-excerpt">Our latest single "Kenyan Vibes" is now available on all streaming platforms. Get ready for the perfect anthem celebrating Kenyan culture!</p>
+                            <a href="#" class="btn btn-outline">Read More</a>
+                        </div>
+                    </div>
+                    <div class="blog-card fade-in">
+                        <img src="https://via.placeholder.com/300x200/0A0A0A/D4AF37?text=Studio+Update" alt="Blog Image" class="blog-image">
+                        <div class="blog-info">
+                            <h3 class="blog-title">Nairobi Studio Upgrade Complete</h3>
+                            <div class="blog-date">May 28, 2023</div>
+                            <p class="blog-excerpt">We've completed our Nairobi studio upgrade with state-of-the-art equipment to deliver even better sound quality for our artists.</p>
+                            <a href="#" class="btn btn-outline">Read More</a>
+                        </div>
+                    </div>
+                    <div class="blog-card fade-in">
+                        <img src="https://via.placeholder.com/300x200/0A0A0A/D4AF37?text=Event+Highlight" alt="Blog Image" class="blog-image">
+                        <div class="blog-info">
+                            <h3 class="blog-title">Nairobi Festival Lineup Announcement</h3>
+                            <div class="blog-date">April 10, 2023</div>
+                            <p class="blog-excerpt">We're excited to announce that KB Music will be performing at this year's Nairobi Music Festival!</p>
+                            <a href="#" class="btn btn-outline">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Shop Page -->
+    <div id="shop" class="page">
+        <section>
+            <div class="container">
+                <div class="section-title">
+                    <h2>Shop Merch</h2>
+                    <p>Represent KB Music with our exclusive merchandise</p>
+                </div>
+                <div class="shop-grid">
+                    <div class="product-card fade-in">
+                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=KB+Music+T-Shirt" alt="Product Image" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">KB Music T-Shirt</h3>
+                            <div class="product-price">KES 2,500</div>
+                            <a href="#" class="btn btn-outline">Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=KB+Music+Hoodie" alt="Product Image" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">KB Music Hoodie</h3>
+                            <div class="product-price">KES 4,500</div>
+                            <a href="#" class="btn btn-outline">Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=KB+Music+Cap" alt="Product Image" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">KB Music Cap</h3>
+                            <div class="product-price">KES 2,000</div>
+                            <a href="#" class="btn btn-outline">Add to Cart</a>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in">
+                        <img src="https://via.placeholder.com/300x300/0A0A0A/D4AF37?text=KB+Music+Stickers" alt="Product Image" class="product-image">
+                        <div class="product-info">
+                            <h3 class="product-title">KB Music Sticker Pack</h3>
+                            <div class="product-price">KES 800</div>
+                            <a href="#" class="btn btn-outline">Add to Cart</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page">
+        <section class="bg-dark">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Contact Us</h2>
+                    <p>Ready to work with us? Get in touch to discuss your project or event.</p>
+                </div>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3>Location</h3>
+                                <p>Westlands, Nairobi, Kenya</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h3>Phone</h3>
+                                <p>+254 712 345 678</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h3>Email</h3>
+                                <p>info@kbmusic.co.ke</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h3>Business Hours</h3>
+                                <p>Monday - Friday: 9am - 6pm</p>
+                                <p>Saturday: 10am - 4pm</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <form id="bookingForm">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" required>
+                                    <option value="" disabled selected>Service Type</option>
+                                    <option value="music-production">Music Production</option>
+                                    <option value="artist-development">Artist Development</option>
+                                    <option value="birthday-parties">Birthday Parties</option>
+                                    <option value="weddings">Weddings</option>
+                                    <option value="corporate-events">Corporate Events</option>
+                                    <option value="house-parties">House Parties</option>
+                                    <option value="concerts-festivals">Concerts/Festivals</option>
+                                    <option value="dj-services">DJ Services</option>
+                                    <option value="live-performances">Live Performances</option>
+                                    <option value="mc-host-services">MC/Host Services</option>
+                                    <option value="sound-rental">Sound System Rental</option>
+                                    <option value="custom-package">Custom Entertainment Package</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">KB <span>Music</span> <span class="kenya-flag">
+                        <div class="kenya-stripe kenya-black"></div>
+                        <div class="kenya-stripe kenya-red"></div>
+                        <div class="kenya-stripe kenya-green"></div>
+                    </span></div>
+                    <p class="footer-description">Where Sound Meets Experience. Founded by Kraizy Bwoy in Nairobi, Kenya, KB Music is dedicated to elevating music and creating unforgettable event experiences.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-spotify"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links-container">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#" onclick="showPage('home')">Home</a></li>
+                        <li class="footer-link"><a href="#" onclick="showPage('about')">About</a></li>
+                        <li class="footer-link"><a href="#" onclick="showPage('music')">Music</a></li>
+                        <li class="footer-link"><a href="#" onclick="showPage('services')">Services</a></li>
+                        <li class="footer-link"><a href="#" onclick="showPage('events')">Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-container">
+                    <h3 class="footer-heading">Services</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="#" onclick="showPage('services')">Music Production</a></li>
+                        <li class="footer-link"><a href="#" onclick="showPage('services')">Artist Development</a></li>
+                        <li class="footer-link"><a href="#" onclick="showPage('services')">Event Services</a></li>
+                        <li class="footer-link"><a href="#" onclick="showPage('services')">DJ Services</a></li>
+                        <li class="footer-link"><a href="#" onclick="showPage('services')">Custom Packages</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links-container">
+                    <h3 class="footer-heading">Contact</h3>
+                    <ul class="footer-links">
+                        <li class="footer-link"><a href="tel:+254712345678">+254 712 345 678</a></li>
+                        <li class="footer-link"><a href="mailto:info@kbmusic.co.ke">info@kbmusic.co.ke</a></li>
+                        <li class="footer-link"><a href="#" onclick="showPage('contact')">Booking Form</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 KB Music, Founded by Kraizy Bwoy in Nairobi, Kenya. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Music Player -->
+    <div class="music-player" id="musicPlayer">
+        <div class="player-header">
+            <div class="player-title" id="playerTitle">Now Playing</div>
+            <button class="close-player" id="closePlayer">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="player-controls">
+            <button class="control-btn" id="prevBtn">
+                <i class="fas fa-step-backward"></i>
+            </button>
+            <button class="control-btn play-pause" id="playPauseBtn">
+                <i class="fas fa-play" id="playIcon"></i>
+            </button>
+            <button class="control-btn" id="nextBtn">
+                <i class="fas fa-step-forward"></i>
+            </button>
+        </div>
+        <div class="progress-bar">
+            <div class="progress" id="progress"></div>
+        </div>
+        <div class="player-time">
+            <span id="currentTime">0:00</span>
+            <span id="duration">0:00</span>
+        </div>
+    </div>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Close mobile menu if open
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            return false;
+        }
+
+        // Create animated background particles
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size between 2px and 5px
+                const size = Math.random() * 3 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation delay and duration
+                const delay = Math.random() * 15;
+                const duration = Math.random() * 10 + 15;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+
+        // Scroll animation for elements
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+        
+        fadeElements.forEach(el => {
+            observer.observe(el);
+        });
+
+        // Section title animation
+        const sectionTitles = document.querySelectorAll('h2');
+        
+        const titleObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                }
+            });
+        }, {
+            threshold: 0.5
+        });
+        
+        sectionTitles.forEach(title => {
+            titleObserver.observe(title);
+        });
+
+        // Music player functionality
+        const musicPlayer = document.getElementById('musicPlayer');
+        const playPauseBtn = document.getElementById('playPauseBtn');
+        const playIcon = document.getElementById('playIcon');
+        const closePlayer = document.getElementById('closePlayer');
+        const progress = document.getElementById('progress');
+        const currentTime = document.getElementById('currentTime');
+        const duration = document.getElementById('duration');
+        const playerTitle = document.getElementById('playerTitle');
+        
+        let isPlaying = false;
+        let currentAudio = null;
+        
+        // Play buttons event listeners
+        document.querySelectorAll('.play-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const audioId = btn.getAttribute('data-audio');
+                const musicTitle = btn.closest('.music-card').querySelector('.music-title').textContent;
+                
+                // If clicking the same song, toggle play/pause
+                if (currentAudio === audioId) {
+                    togglePlayPause();
+                } else {
+                    // Otherwise, play new song
+                    playAudio(audioId, musicTitle);
+                }
+            });
+        });
+        
+        function playAudio(audioId, title) {
+            // Stop current audio if playing
+            if (currentAudio && isPlaying) {
+                togglePlayPause();
+            }
+            
+            // Set new audio
+            currentAudio = audioId;
+            playerTitle.textContent = title;
+            
+            // Show player
+            musicPlayer.classList.add('active');
+            
+            // Simulate playing (in a real implementation, this would control an actual audio element)
+            isPlaying = true;
+            playIcon.classList.remove('fa-play');
+            playIcon.classList.add('fa-pause');
+            
+            // Simulate progress (in a real implementation, this would come from the audio element)
+            let progressValue = 0;
+            const progressInterval = setInterval(() => {
+                if (!isPlaying) {
+                    clearInterval(progressInterval);
+                    return;
+                }
+                
+                progressValue += 0.5;
+                progress.style.width = `${progressValue}%`;
+                
+                // Update time display
+                const currentSeconds = Math.floor(progressValue * 180 / 100);
+                const minutes = Math.floor(currentSeconds / 60);
+                const seconds = currentSeconds % 60;
+                currentTime.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+                
+                if (progressValue >= 100) {
+                    clearInterval(progressInterval);
+                    isPlaying = false;
+                    playIcon.classList.remove('fa-pause');
+                    playIcon.classList.add('fa-play');
+                    progress.style.width = '0%';
+                    currentTime.textContent = '0:00';
+                }
+            }, 500);
+            
+            // Set duration (simulated)
+            duration.textContent = '3:00';
+        }
+        
+        function togglePlayPause() {
+            isPlaying = !isPlaying;
+            
+            if (isPlaying) {
+                playIcon.classList.remove('fa-play');
+                playIcon.classList.add('fa-pause');
+                // In a real implementation, you would call audioElement.play() here
+            } else {
+                playIcon.classList.remove('fa-pause');
+                playIcon.classList.add('fa-play');
+                // In a real implementation, you would call audioElement.pause() here
+            }
+        }
+        
+        playPauseBtn.addEventListener('click', togglePlayPause);
+        
+        closePlayer.addEventListener('click', () => {
+            musicPlayer.classList.remove('active');
+            isPlaying = false;
+            playIcon.classList.remove('fa-pause');
+            playIcon.classList.add('fa-play');
+            progress.style.width = '0%';
+            currentTime.textContent = '0:00';
+        });
+
+        // Form submission
+        document.getElementById('bookingForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            e.target.reset();
+        });
+
+        // Initialize particles on load
+        window.addEventListener('load', () => {
+            createParticles();
+            
+            // Show page transition briefly on load
+            const pageTransition = document.getElementById('pageTransition');
+            pageTransition.classList.add('active');
+            
+            setTimeout(() => {
+                pageTransition.classList.remove('active');
+            }, 1500);
+        });
+    </script>
+</body>
+</html>
